@@ -1,0 +1,41 @@
+name: Build and Release H616 Image
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y \
+            ccache debian-archive-keyring debootstrap device-tree-compiler dwarves \
+            gcc-arm-linux-gnueabihf jq libbison-dev libc6-dev-armhf-cross \
+            libelf-dev libfl-dev liblz4-tool libpython2.7-dev libusb-1.0-0-dev \
+            pigz pixz pv swig pkg-config python3-distutils qemu-user-static u-boot-tools \
+            distcc uuid-dev lib32ncurses-dev lib32stdc++6 apt-cacher-ng \
+            aptly aria2 libfdt-dev libssl-dev
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build image
+        run: sudo ./build.sh
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: H616 Image ${{ github.ref_name }}
+          files: output/images/H616_3.0.0_debian_bullseye_server_linux5.16.17.img
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
