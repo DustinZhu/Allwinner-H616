@@ -25,7 +25,7 @@ DEB_STORAGE=$DEST/debs
 BTRFS_COMPRESSION=zlib          # default btrfs filesystem compression method is zlib
 
 MAINLINE_KERNEL_DIR="$SRC/kernel"
-MAINLINE_UBOOT_DIR="$SRC/u-boot"
+MAINLINE_UBOOT_DIR="$SRC/u-boot-2026.04"
 
 # Let's set default data if not defined in board configuration above
 [[ -z $OFFSET ]] && OFFSET=4    # offset to 1st partition (we use 4MiB boundaries by default)
