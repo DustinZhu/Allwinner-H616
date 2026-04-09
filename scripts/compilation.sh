@@ -116,7 +116,7 @@ compile_uboot()
 			${PROGRESS_LOG_TO_FILE:+' | tee -a $DEST/${LOG_SUBPATH}/compilation.log'} \
 			${OUTPUT_VERYSILENT:+' >/dev/null 2>/dev/null'}
 
-        [[ -f .config ]] && sed -i "s/^CONFIG_LOCALVERSION=.*$/CONFIG_LOCALVERSION=\"-->${BOARD_NAME}\"/" .config
+        [[ -f .config ]] && sed -i "s/^CONFIG_LOCALVERSION=.*$/CONFIG_LOCALVERSION=\"-${BOARD_NAME}\"/" .config
         [[ -f .config ]] && sed -i 's/CONFIG_LOCALVERSION_AUTO=.*/# CONFIG_LOCALVERSION_AUTO is not set/g' .config
 
         [[ -f tools/logos/udoo.bmp ]] && cp "${EXTER}"/packages/blobs/splash/udoo.bmp tools/logos/udoo.bmp
