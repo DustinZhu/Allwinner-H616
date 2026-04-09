@@ -81,7 +81,7 @@ KERNEL_CONFIGURE="no"
 [[ $MANUAL_KERNEL_CONFIGURE == yes ]] && KERNEL_CONFIGURE="yes"
 [[ $MANUAL_KERNEL_CONFIGURE == no ]] && KERNEL_CONFIGURE="no"
 
-BOOTCONFIG="yuzukihd-chameleon_defconfig"
+BOOTCONFIG="yuzukihd-chameleon-biqu_defconfig"
 LINUXFAMILY="sun50iw9"
 
 ###################################################

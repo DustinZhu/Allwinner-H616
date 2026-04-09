@@ -6,7 +6,6 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/clock/sun50i-h616-ccu.h>
 #include <dt-bindings/clock/sun50i-h6-r-ccu.h>
-#include <dt-bindings/clock/sun6i-rtc.h>
 #include <dt-bindings/clock/sun8i-de2.h>
 #include <dt-bindings/clock/sun8i-tcon-top.h>
 #include <dt-bindings/reset/sun50i-h616-ccu.h>
@@ -461,11 +460,6 @@
 			uart5_ph_pins: uart5-ph-pins {
 				pins = "PH2", "PH3";
 				function = "uart5";
-			};
-
-			x32clk_fanout_pin: x32clk-fanout-pin {
-				pins = "PG10";
-				function = "clock";
 			};
 		};
 
